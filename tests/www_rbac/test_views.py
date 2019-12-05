@@ -30,7 +30,6 @@ import urllib
 from datetime import timedelta
 from urllib.parse import quote_plus
 
-import mock
 from flask import Markup, url_for
 from flask._compat import PY2
 from parameterized import parameterized
@@ -51,6 +50,7 @@ from airflow.utils.state import State
 from airflow.utils.timezone import datetime
 from airflow.www_rbac import app as application
 from tests.test_utils.config import conf_vars
+from tests.compat import mock
 
 
 class TestBase(unittest.TestCase):
