@@ -17,21 +17,24 @@
 # specific language governing permissions and limitations
 # under the License.
 
-import unittest.mock
 from base64 import b64encode
+from unittest import TestCase, main
+
 import six
+
 
 from airflow.contrib.operators.ssh_operator import SSHOperator
 from airflow.models import DAG, TaskInstance
 from airflow.utils import timezone
 from airflow.utils.timezone import datetime
+from tests.compat import mock
 from tests.test_utils.config import conf_vars
 
 TEST_DAG_ID = 'unit_tests_ssh_test_op'
 DEFAULT_DATE = datetime(2017, 1, 1)
 
 
-class SSHOperatorTest(unittest.TestCase):
+class SSHOperatorTest(TestCase):
     def setUp(self):
         from airflow.contrib.hooks.ssh_hook import SSHHook
         hook = SSHHook(ssh_conn_id='ssh_default')
@@ -198,4 +201,4 @@ class SSHOperatorTest(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    unittest.main()
+    main()
