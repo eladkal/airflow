@@ -434,18 +434,19 @@ class CoreTest(unittest.TestCase):
         Tests that Operators reject illegal arguments
         """
         with warnings.catch_warnings(record=True) as w:
-            BashOperator(
+            task = BashOperator(
                 task_id='test_illegal_args',
                 bash_command='echo success',
                 dag=self.dag,
                 illegal_argument_1234='hello?')
-            assert len(w) >= 1, "There should be at least one warning."
-            self.assertTrue(
-                issubclass(w[0].category, PendingDeprecationWarning))
-            self.assertIn(
-                ('Invalid arguments were passed to BashOperator '
-                 '(task_id: test_illegal_args).'),
-                w[0].message.args[0])
+        assert task, "The task should be created."
+        assert len(w) >= 1, "There should be at least one warning."
+        self.assertTrue(
+            issubclass(w[0].category, PendingDeprecationWarning))
+        self.assertIn(
+            ('Invalid arguments were passed to BashOperator '
+             '(task_id: test_illegal_args).'),
+            w[0].message.args[0])
 
     def test_bash_operator(self):
         t = BashOperator(
