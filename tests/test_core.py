@@ -439,6 +439,7 @@ class CoreTest(unittest.TestCase):
                 bash_command='echo success',
                 dag=self.dag,
                 illegal_argument_1234='hello?')
+            assert len(w) >= 1, "There should be at least one warning."
             self.assertTrue(
                 issubclass(w[0].category, PendingDeprecationWarning))
             self.assertIn(
@@ -2561,7 +2562,7 @@ class FakeHDFSHook(object):
 
 class ConnectionTest(unittest.TestCase):
     def setUp(self):
-        utils.db.initdb()
+        utils.db.initdb(rbac=True)
         os.environ['AIRFLOW_CONN_TEST_URI'] = (
             'postgres://username:password@ec2.compute.com:5432/the_database')
         os.environ['AIRFLOW_CONN_TEST_URI_NO_CREDS'] = (

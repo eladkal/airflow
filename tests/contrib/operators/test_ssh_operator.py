@@ -27,7 +27,6 @@ from airflow.contrib.operators.ssh_operator import SSHOperator
 from airflow.models import DAG, TaskInstance
 from airflow.utils import timezone
 from airflow.utils.timezone import datetime
-from tests.compat import mock
 from tests.test_utils.config import conf_vars
 
 TEST_DAG_ID = 'unit_tests_ssh_test_op'

@@ -43,7 +43,7 @@ def reset_db():
     """
     Resets Airflow db.
     """
-    db.resetdb()
+    db.resetdb(rbac=True)
     yield
 
 
@@ -91,17 +91,17 @@ def breeze_test_helper(request):
     if request.config.option.db_init:
         print("Initializing the DB - forced with --with-db-init switch.")
         try:
-            db.initdb()
+            db.initdb(rbac=True)
         except:  # pylint: disable=bare-except # noqa
             print("Skipping db initialization because database already exists.")
-        db.resetdb()
+        db.resetdb(rbac=True)
     elif not os.path.exists(pid_file):
         print(
             "Initializing the DB - first time after entering the container.\n"
             "You can force re-initialization the database by adding --with-db-init switch to run-tests."
         )
         try:
-            db.initdb()
+            db.initdb(rbac=True)
         except:  # pylint: disable=bare-except # noqa
             print("Skipping db initialization because database already exists.")
         db.resetdb(rbac=True)
