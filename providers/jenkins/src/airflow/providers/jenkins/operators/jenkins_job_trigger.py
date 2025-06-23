@@ -19,7 +19,6 @@ from __future__ import annotations
 
 import ast
 import json
-import socket
 import time
 from collections.abc import Iterable, Mapping, Sequence
 from functools import cached_property
@@ -67,7 +66,7 @@ def jenkins_request_with_headers(jenkins_server: Jenkins, req: Request) -> Jenki
         if e.code == 404:
             raise jenkins.NotFoundException("Requested item could not be found")
         raise
-    except socket.timeout as e:
+    except TimeoutError as e:
         raise jenkins.TimeoutException(f"Error in request: {e}")
     except URLError as e:
         raise JenkinsException(f"Error in request: {e.reason}")

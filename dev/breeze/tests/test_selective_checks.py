@@ -813,9 +813,9 @@ def assert_outputs_are_printed(expected_outputs: dict[str, str], stderr: str):
                 ("generated/provider_dependencies.json",),
                 {
                     "selected-providers-list-as-string": ALL_PROVIDERS_AFFECTED,
-                    "all-python-versions": "['3.9', '3.10', '3.11', '3.12']",
+                    "all-python-versions": "['3.10', '3.11', '3.12']",
                     "all-python-versions-list-as-string": ALL_PYTHON_VERSIONS_AS_STRING,
-                    "python-versions": "['3.9', '3.10', '3.11', '3.12']",
+                    "python-versions": "['3.10', '3.11', '3.12']",
                     "python-versions-list-as-string": ALL_PYTHON_VERSIONS_AS_STRING,
                     "ci-image-build": "true",
                     "prod-image-build": "true",
@@ -840,9 +840,9 @@ def assert_outputs_are_printed(expected_outputs: dict[str, str], stderr: str):
                 ("generated/provider_dependencies.json",),
                 {
                     "selected-providers-list-as-string": ALL_PROVIDERS_AFFECTED,
-                    "all-python-versions": "['3.9', '3.10', '3.11', '3.12']",
+                    "all-python-versions": "['3.10', '3.11', '3.12']",
                     "all-python-versions-list-as-string": ALL_PYTHON_VERSIONS_AS_STRING,
-                    "python-versions": "['3.9', '3.10', '3.11', '3.12']",
+                    "python-versions": "['3.10', '3.11', '3.12']",
                     "python-versions-list-as-string": ALL_PYTHON_VERSIONS_AS_STRING,
                     "ci-image-build": "true",
                     "prod-image-build": "true",
@@ -1443,11 +1443,11 @@ def test_full_test_needed_when_scripts_changes(files: tuple[str, ...], expected_
                 {
                     "selected-providers-list-as-string": ALL_PROVIDERS_AFFECTED,
                     "all-versions": "true",
-                    "all-python-versions": "['3.9', '3.10', '3.11', '3.12']",
+                    "all-python-versions": "['3.10', '3.11', '3.12']",
                     "all-python-versions-list-as-string": ALL_PYTHON_VERSIONS_AS_STRING,
                     "mysql-versions": "['8.0', '8.4']",
                     "postgres-versions": "['13', '14', '15', '16', '17']",
-                    "python-versions": "['3.9', '3.10', '3.11', '3.12']",
+                    "python-versions": "['3.10', '3.11', '3.12']",
                     "python-versions-list-as-string": ALL_PYTHON_VERSIONS_AS_STRING,
                     "kubernetes-versions": ALL_KUBERNETES_VERSIONS_AS_LIST,
                     "kubernetes-versions-list-as-string": ALL_KUBERNETES_VERSIONS_AS_STRING,
@@ -1822,7 +1822,7 @@ def test_expected_output_pull_request_v2_7(
             "main",
             {
                 "selected-providers-list-as-string": ALL_PROVIDERS_AFFECTED,
-                "all-python-versions": "['3.9', '3.10', '3.11', '3.12']",
+                "all-python-versions": "['3.10', '3.11', '3.12']",
                 "all-python-versions-list-as-string": ALL_PYTHON_VERSIONS_AS_STRING,
                 "ci-image-build": "true",
                 "prod-image-build": "true",
@@ -1843,7 +1843,7 @@ def test_expected_output_pull_request_v2_7(
             (),
             "v2-3-stable",
             {
-                "all-python-versions": "['3.9', '3.10', '3.11', '3.12']",
+                "all-python-versions": "['3.10', '3.11', '3.12']",
                 "all-python-versions-list-as-string": ALL_PYTHON_VERSIONS_AS_STRING,
                 "ci-image-build": "true",
                 "prod-image-build": "true",
@@ -1866,7 +1866,7 @@ def test_expected_output_pull_request_v2_7(
             "main",
             {
                 "selected-providers-list-as-string": ALL_PROVIDERS_AFFECTED,
-                "all-python-versions": "['3.9', '3.10', '3.11', '3.12']",
+                "all-python-versions": "['3.10', '3.11', '3.12']",
                 "all-python-versions-list-as-string": ALL_PYTHON_VERSIONS_AS_STRING,
                 "ci-image-build": "true",
                 "prod-image-build": "true",
@@ -2150,7 +2150,7 @@ def test_files_provided_trigger_full_build_for_any_event_type(github_event):
     )
     assert_outputs_are_printed(
         {
-            "all-python-versions": "['3.9', '3.10', '3.11', '3.12']",
+            "all-python-versions": "['3.10', '3.11', '3.12']",
             "all-python-versions-list-as-string": ALL_PYTHON_VERSIONS_AS_STRING,
             "ci-image-build": "true",
             "prod-image-build": "true",

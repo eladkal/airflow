@@ -31,10 +31,11 @@ import json
 import logging
 import os
 import warnings
+from collections.abc import Callable
 from copy import deepcopy
 from functools import cached_property, wraps
 from pathlib import Path
-from typing import TYPE_CHECKING, Any, Callable, Generic, TypeVar, Union
+from typing import TYPE_CHECKING, Any, Generic, TypeVar, Union
 
 import boto3
 import botocore
@@ -43,6 +44,8 @@ import jinja2
 import requests
 import tenacity
 from asgiref.sync import sync_to_async
+from boto3.resources.base import ServiceResource
+from botocore.client import BaseClient
 from botocore.config import Config
 from botocore.waiter import Waiter, WaiterModel
 from dateutil.tz import tzlocal
@@ -63,7 +66,8 @@ from airflow.providers_manager import ProvidersManager
 from airflow.utils.helpers import exactly_one
 from airflow.utils.log.logging_mixin import LoggingMixin
 
-BaseAwsConnection = TypeVar("BaseAwsConnection", bound=Union[boto3.client, boto3.resource])
+BaseAwsConnection = TypeVar("BaseAwsConnection", bound=BaseClient | ServiceResource)
+
 
 if AIRFLOW_V_3_0_PLUS:
     from airflow.sdk.exceptions import AirflowRuntimeError

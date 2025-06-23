@@ -21,11 +21,10 @@ import itertools
 import os
 import re
 from collections import defaultdict
-from collections.abc import Iterable, Iterator, Sequence
+from collections.abc import Callable, Iterable, Iterator, Sequence
 from typing import (
     TYPE_CHECKING,
     Any,
-    Callable,
     NamedTuple,
     TypeVar,
     Union,

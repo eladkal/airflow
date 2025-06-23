@@ -18,19 +18,17 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from collections.abc import Iterable
+from collections.abc import Callable, Iterable
 from datetime import datetime
 from enum import Enum
 from typing import (
     TYPE_CHECKING,
     Annotated,
     Any,
-    Callable,
     Generic,
     Literal,
     Optional,
     TypeVar,
-    Union,
     overload,
 )
 
@@ -517,13 +515,13 @@ def float_range_filter_factory(
 
 # Common Safe DateTime
 DateTimeQuery = Annotated[str, AfterValidator(_safe_parse_datetime)]
-OptionalDateTimeQuery = Annotated[Union[str, None], AfterValidator(_safe_parse_datetime_optional)]
+OptionalDateTimeQuery = Annotated[str | None, AfterValidator(_safe_parse_datetime_optional)]
 
 # DAG
 QueryLimit = Annotated[LimitFilter, Depends(LimitFilter.depends)]
 QueryOffset = Annotated[OffsetFilter, Depends(OffsetFilter.depends)]
 QueryPausedFilter = Annotated[
-    FilterParam[Optional[bool]],
+    FilterParam[bool | None],
     Depends(filter_param_factory(DagModel.is_paused, Optional[bool], filter_name="paused")),
 ]
 QueryExcludeStaleFilter = Annotated[_ExcludeStaleFilter, Depends(_ExcludeStaleFilter.depends)]
@@ -541,7 +539,7 @@ QueryOwnersFilter = Annotated[_OwnersFilter, Depends(_OwnersFilter.depends)]
 
 # DagRun
 QueryLastDagRunStateFilter = Annotated[
-    FilterParam[Optional[DagRunState]],
+    FilterParam[DagRunState | None],
     Depends(filter_param_factory(DagRun.state, Optional[DagRunState], filter_name="last_dag_run_state")),
 ]
 
@@ -693,8 +691,8 @@ def _optional_boolean(value: bool | None) -> bool | None:
     return value if value is not None else False
 
 
-QueryIncludeUpstream = Annotated[Union[bool], AfterValidator(_optional_boolean)]
-QueryIncludeDownstream = Annotated[Union[bool], AfterValidator(_optional_boolean)]
+QueryIncludeUpstream = Annotated[bool, AfterValidator(_optional_boolean)]
+QueryIncludeDownstream = Annotated[bool, AfterValidator(_optional_boolean)]
 
 state_priority: list[None | TaskInstanceState] = [
     TaskInstanceState.FAILED,

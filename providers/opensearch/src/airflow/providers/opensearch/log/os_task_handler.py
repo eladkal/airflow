@@ -22,9 +22,10 @@ import logging
 import sys
 import time
 from collections import defaultdict
+from collections.abc import Callable
 from datetime import datetime
 from operator import attrgetter
-from typing import TYPE_CHECKING, Any, Callable, Literal
+from typing import TYPE_CHECKING, Any, Literal
 
 import pendulum
 from opensearchpy import OpenSearch

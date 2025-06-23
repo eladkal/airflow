@@ -27,8 +27,9 @@ import shutil
 import sys
 import time
 from collections import defaultdict
+from collections.abc import Callable
 from operator import attrgetter
-from typing import TYPE_CHECKING, Any, Callable, Literal
+from typing import TYPE_CHECKING, Any, Literal
 from urllib.parse import quote, urlparse
 
 # Using `from elasticsearch import *` would break elasticsearch mocking used in unit test.

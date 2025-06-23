@@ -19,12 +19,12 @@ from __future__ import annotations
 
 import base64
 import os
-from collections.abc import Iterable, Mapping
+from collections.abc import Callable, Iterable, Mapping
 from contextlib import closing, contextmanager
 from functools import cached_property
 from io import StringIO
 from pathlib import Path
-from typing import TYPE_CHECKING, Any, Callable, TypeVar, overload
+from typing import TYPE_CHECKING, Any, TypeVar, overload
 from urllib.parse import urlparse
 
 import requests

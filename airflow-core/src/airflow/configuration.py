@@ -66,7 +66,7 @@ _SQLITE3_VERSION_PATTERN = re.compile(r"(?P<version>^\d+(?:\.\d+)*)\D?.*$")
 
 ConfigType = Union[str, int, float, bool]
 ConfigOptionsDictType = dict[str, ConfigType]
-ConfigSectionSourcesType = dict[str, Union[str, tuple[str, str]]]
+ConfigSectionSourcesType = dict[str, str | tuple[str, str]]
 ConfigSourcesType = dict[str, ConfigSectionSourcesType]
 
 ENV_VAR_PREFIX = "AIRFLOW__"

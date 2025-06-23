@@ -101,8 +101,13 @@ def get_package_setup_metadata_hash() -> str:
     metadata = distribution("apache-airflow-breeze").metadata
     try:
         description = metadata.json["description"]  # type: ignore[attr-defined]
-    except AttributeError:
-        description = metadata.as_string()
+    except (AttributeError, KeyError):
+        # For Python 3.10+, use metadata.description directly instead of get_payload()
+        description = str(metadata.description)
+
+    if isinstance(description, list):
+        description = "\n".join(description)
+
     for line in description.splitlines(keepends=False):
         if line.startswith(prefix):
             return line[len(prefix) :]

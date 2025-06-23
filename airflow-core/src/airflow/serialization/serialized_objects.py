@@ -525,14 +525,14 @@ _ExpandInputOriginalValue = Union[
     Mapping[str, Any],
     # For expand_kwargs(arg).
     XComArg,
-    Collection[Union[XComArg, Mapping[str, Any]]],
+    Collection[XComArg | Mapping[str, Any]],
 ]
 _ExpandInputSerializedValue = Union[
     # For .expand(**kwargs).
     Mapping[str, Any],
     # For expand_kwargs(arg).
     _XComRef,
-    Collection[Union[_XComRef, Mapping[str, Any]]],
+    Collection[_XComRef | Mapping[str, Any]],
 ]
 
 

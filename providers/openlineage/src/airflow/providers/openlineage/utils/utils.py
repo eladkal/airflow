@@ -20,10 +20,11 @@ from __future__ import annotations
 import datetime
 import json
 import logging
+from collections.abc import Callable
 from contextlib import suppress
 from functools import wraps
 from importlib import metadata
-from typing import TYPE_CHECKING, Any, Callable
+from typing import TYPE_CHECKING, Any
 
 import attrs
 from openlineage.client.facet_v2 import parent_run
