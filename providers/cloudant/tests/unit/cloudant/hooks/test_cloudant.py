@@ -17,7 +17,6 @@
 # under the License.
 from __future__ import annotations
 
-import sys
 from unittest.mock import patch
 
 import pytest
@@ -27,14 +26,7 @@ from airflow.models import Connection
 
 pytestmark: List[Mark] = []
 
-if sys.version_info < (3, 10):
-    pytestmark.append(
-        pytest.mark.skip(
-            f"Skipping {__name__} as the cloudant provider is not supported on Python 3.9, see #41555."
-        )
-    )
-else:
-    from airflow.providers.cloudant.hooks.cloudant import CloudantHook
+from airflow.providers.cloudant.hooks.cloudant import CloudantHook
 
 
 class TestCloudantHook:

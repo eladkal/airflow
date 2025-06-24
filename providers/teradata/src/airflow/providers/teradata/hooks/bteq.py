@@ -192,7 +192,7 @@ class BteqHook(TtuHook):
                         and exit_status
                         not in (
                             bteq_quit_rc
-                            if isinstance(bteq_quit_rc, (list, tuple))
+                            if isinstance(bteq_quit_rc, list | tuple)
                             else [bteq_quit_rc if bteq_quit_rc is not None else 0]
                         )
                     ):
@@ -284,7 +284,7 @@ class BteqHook(TtuHook):
             and process.returncode
             not in (
                 bteq_quit_rc
-                if isinstance(bteq_quit_rc, (list, tuple))
+                if isinstance(bteq_quit_rc, list | tuple)
                 else [bteq_quit_rc if bteq_quit_rc is not None else 0]
             )
         ):

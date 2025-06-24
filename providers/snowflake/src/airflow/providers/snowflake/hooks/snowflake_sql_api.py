@@ -342,11 +342,7 @@ class SnowflakeSqlApiHook(SnowflakeHook):
             return exception.status in [429, 503, 504]
         if isinstance(
             exception,
-            (
-                ConnectionError,
-                Timeout,
-                ClientConnectionError,
-            ),
+            ConnectionError | Timeout | ClientConnectionError,
         ):
             return True
         return False

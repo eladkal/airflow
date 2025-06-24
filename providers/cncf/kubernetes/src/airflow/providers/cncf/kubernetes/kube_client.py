@@ -18,8 +18,8 @@
 
 from __future__ import annotations
 
-from typing import cast, List, Tuple, Union
 import logging
+from typing import cast
 
 import urllib3.util
 
@@ -89,11 +89,15 @@ def _enable_tcp_keepalive() -> None:
         log.debug("Unable to set TCP_KEEPCNT on this platform")
 
     # Create a type alias for socket options
-    SocketOptionType = List[Tuple[int, int, Union[int, bytes]]]
+    SocketOptionType = list[tuple[int, int, int | bytes]]
 
     # Convert the lists before adding
-    HTTPSConnection.default_socket_options = cast(SocketOptionType, HTTPSConnection.default_socket_options) + cast(SocketOptionType, socket_options)
-    HTTPConnection.default_socket_options = cast(SocketOptionType, HTTPConnection.default_socket_options) + cast(SocketOptionType, socket_options)
+    HTTPSConnection.default_socket_options = cast(
+        "SocketOptionType", HTTPSConnection.default_socket_options
+    ) + cast("SocketOptionType", socket_options)
+    HTTPConnection.default_socket_options = cast(
+        "SocketOptionType", HTTPConnection.default_socket_options
+    ) + cast("SocketOptionType", socket_options)
 
 
 def get_kube_client(
