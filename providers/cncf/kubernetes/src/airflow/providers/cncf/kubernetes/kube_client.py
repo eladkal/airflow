@@ -92,12 +92,8 @@ def _enable_tcp_keepalive() -> None:
     SocketOptionType = list[tuple[int, int, int | bytes]]
 
     # Convert the lists before adding
-    HTTPSConnection.default_socket_options = cast(
-        "SocketOptionType", HTTPSConnection.default_socket_options
-    ) + cast("SocketOptionType", socket_options)
-    HTTPConnection.default_socket_options = cast(
-        "SocketOptionType", HTTPConnection.default_socket_options
-    ) + cast("SocketOptionType", socket_options)
+    HTTPSConnection.default_socket_options = HTTPSConnection.default_socket_options + socket_options
+    HTTPConnection.default_socket_options = HTTPConnection.default_socket_options + socket_options
 
 
 def get_kube_client(

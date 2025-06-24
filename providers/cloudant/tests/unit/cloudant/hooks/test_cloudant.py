@@ -23,6 +23,7 @@ import pytest
 
 from airflow.exceptions import AirflowException
 from airflow.models import Connection
+from typing import List
 
 pytestmark: List[Mark] = []
 
