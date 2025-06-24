@@ -30,10 +30,10 @@ import subprocess
 import sys
 from collections.abc import Mapping
 from pathlib import Path
+from subprocess import CalledProcessError, CompletedProcess
 from typing import Any
 
 from rich.markup import escape
-from subprocess import CompletedProcess, CalledProcessError
 
 from airflow_breeze.utils.ci_group import ci_group
 from airflow_breeze.utils.console import Output, get_console
@@ -49,7 +49,7 @@ from airflow_breeze.utils.path_utils import (
 )
 from airflow_breeze.utils.shared_options import get_dry_run, get_verbose
 
-#RunCommandResult = type[subprocess.CompletedProcess] | type[subprocess.CalledProcessError]
+# RunCommandResult = type[subprocess.CompletedProcess] | type[subprocess.CalledProcessError]
 RunCommandResult = CompletedProcess[Any] | CalledProcessError
 
 OPTION_MATCHER = re.compile(r"^[A-Z_]*=.*$")

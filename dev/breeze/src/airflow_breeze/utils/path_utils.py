@@ -102,7 +102,7 @@ def get_package_setup_metadata_hash() -> str:
     try:
         description = metadata.json["description"]  # type: ignore[attr-defined]
     except (AttributeError, KeyError):
-        description = str(metadata['Description']) if 'Description' in metadata else ''
+        description = str(metadata["Description"]) if "Description" in metadata else ""
 
     if isinstance(description, list):
         description = "\n".join(description)

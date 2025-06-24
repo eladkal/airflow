@@ -19,7 +19,6 @@
 from __future__ import annotations
 
 import logging
-from typing import cast
 
 import urllib3.util
 
@@ -89,10 +88,12 @@ def _enable_tcp_keepalive() -> None:
         log.debug("Unable to set TCP_KEEPCNT on this platform")
 
     # Cast both the default options and our socket options
-    socket_options_cast: list[tuple[int, int, int | bytes]] = [(level, opt, val) for level, opt, val in
-                                                               socket_options]
-    default_options_cast: list[tuple[int, int, int | bytes]] = [(level, opt, val) for level, opt, val in
-                                                                HTTPSConnection.default_socket_options]
+    socket_options_cast: list[tuple[int, int, int | bytes]] = [
+        (level, opt, val) for level, opt, val in socket_options
+    ]
+    default_options_cast: list[tuple[int, int, int | bytes]] = [
+        (level, opt, val) for level, opt, val in HTTPSConnection.default_socket_options
+    ]
 
     # Then use the cast versions for both HTTPS and HTTP
     HTTPSConnection.default_socket_options = default_options_cast + socket_options_cast
