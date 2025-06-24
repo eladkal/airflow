@@ -43,12 +43,22 @@ console = Console(width=400, color_system="standard")
         ),
         pytest.param(
             {},
-            {"python": 3.9},
+            {"python": 3.10},
             {
-                "AIRFLOW_CI_IMAGE": f"ghcr.io/apache/airflow/{AIRFLOW_BRANCH}/ci/python3.9",
+                "AIRFLOW_CI_IMAGE": f"ghcr.io/apache/airflow/{AIRFLOW_BRANCH}/ci/python3.10",
+                "PYTHON_MAJOR_MINOR_VERSION": "3.10",
+            },
+            id="python3.10",
+        ),
+        pytest.param(
+            {},
+            {"airflow_branch": "v3-0-test"},
+            {
+                "DEFAULT_BRANCH": "v3-0-test",
+                "AIRFLOW_CI_IMAGE": "ghcr.io/apache/airflow/v3-0-test/ci/python3.9",
                 "PYTHON_MAJOR_MINOR_VERSION": "3.9",
             },
-            id="python3.9",
+            id="With release branch",
         ),
         pytest.param(
             {},
